@@ -1,8 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
 function App() {
+  
+   fetch('http://localhost:3002/users',{
+     mode:'cors'
+   })
+   .then((response) => { 
+  
+     return response.json()})
+   .then((data) => {
+     console.log('Success:', data);
+   })
+   .catch((error) => {
+     console.error('Error:', error);
+   });
+
   return (
     <div className="App">
       <header className="App-header">
