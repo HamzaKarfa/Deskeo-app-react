@@ -6,8 +6,8 @@ function Admin() {
 
   return (
     <>
-          <Header/>
-          <Content/>
+        <Header/>
+        <Content/>
     </>
 
   );

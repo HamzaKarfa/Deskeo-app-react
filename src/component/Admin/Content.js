@@ -1,17 +1,23 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import ListData from './ListData'
+
+
+
 
 
 function Content() {
   const classes = useStyles();
+
+
+
 
   return (
       <>
@@ -33,9 +39,7 @@ function Content() {
         </Toolbar>
       </AppBar>
       <div className={classes.contentWrapper}>
-        <Typography color="textSecondary" align="center">
-          No users for this project yet
-        </Typography>
+          <ListData/>
       </div>
     </Paper>
     </>
@@ -61,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   contentWrapper: {
+    display:'flex',
+    justifyContent:'center',
     margin: '40px 16px',
   },
 }));
