@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Link } from "react-router-dom";
 
 
 export default function Users() {
@@ -24,24 +21,39 @@ export default function Users() {
                 method:'post',
                 body: formData
             })
+            alert("Merci d'avoir participé")
+            window.location.reload(true);
         }
     }
-
+    function displayImg(){
+        if (image !== '') {
+            return (<img src={URL.createObjectURL(image)} style={{ width: "100px" }}/>)
+        }
+    }
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Living App
-                </Typography>
-                    <form name='form' action="">
-                        <input id="id-for-upload-file" name="phrase" onChange={(e)=> setPhrase(e.target.value)} type="text"/>
-                        <input id="id-for-upload-file" name="file" onChange={(e)=> setImage(e.target.files[0])} type="file"/>
-                        <Button
+                <header>
+                <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" class="toggle-app" title="Click to toggle view" alt='logo'/>
+                </header>
+                <div style={{marginTop:'20px'}}>
+                    <form name='form' action="" method='post' style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+                        <input 
+                            style={{margin: '10px',}}
+                            id="id-for-upload-file" 
+                            name="phrase" 
+                            onChange={(e)=> setPhrase(e.target.value)} 
+                            type="text"
+                        />
+                         {displayImg()}
+                        <Button variant="contained" component="label" style={{margin: '10px',}} >
+                            Upload File
+                            <input id="id-for-upload-file" name="file" onChange={(e)=> setImage(e.target.files[0])} type="file"  style={{ display: "none" }}/>
+                        </Button>
+
+                        <Button    
                             type="submit"
                             fullWidth
                             variant="contained"
@@ -51,8 +63,9 @@ export default function Users() {
                                 e.preventDefault()
                                 addFile()
                             }}
-                        />
+                        >Valider </Button>
                     </form>
+                </div>
             </div>
         </Container>
     )

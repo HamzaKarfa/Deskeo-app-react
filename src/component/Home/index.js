@@ -8,7 +8,7 @@ import './home.css'
   return (
     <React.Fragment>
         <header>
-          <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" class="toggle-app" title="Click to toggle view"/>
+          <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" class="toggle-app" title="Click to toggle view" alt='logo'/>
           <p>le 20 novembre 2019 à 19:34</p>
         </header>
         <main class="main">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,22 +9,32 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import { addPhrase } from "../../action";
 
 
+const stateModal = (state, props) => {
+  return { props: props, state : state };
+};
+const dispatchModal =(dispatch,props) =>{
+  return {
+      addPhrases: () => { dispatch(addPhrase(props.Users)) },
+    }
+ };
+const ModalConnect = ({addPhrases,props}) => {
 
-
-export default function Modal(props) {
     const [open, setOpen] = React.useState(false);
-
     const handleClickOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
-
-
-
         setOpen(false);
     };
+    const ActionButton = () => {
+      addPhrases()
+      setOpen(false);
+    };
+    
     function displayImg(image){
       if (image === null) {
           return <p>Aucune Image</p>
@@ -49,14 +60,22 @@ export default function Modal(props) {
             </Typography>
             </DialogContent>
             <DialogActions>
-            <Button autoFocus onClick={handleClose} color="primary">
-                Mettre en avant
-            </Button>
+              <Link to="/">
+                <Button autoFocus onClick={ActionButton} to="/" color="primary">
+                    Mettre en avant
+                </Button>
+              </Link>
             </DialogActions>
         </Dialog>
         </div>
     );
 }
+
+const Modal = connect(stateModal,dispatchModal)(ModalConnect)
+export default Modal;
+
+
+
 
 const styles = (theme) => ({
   root: {
