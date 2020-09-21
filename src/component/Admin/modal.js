@@ -9,6 +9,55 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
+
+
+
+export default function Modal(props) {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+
+
+
+        setOpen(false);
+    };
+    function displayImg(image){
+      if (image === null) {
+          return <p>Aucune Image</p>
+      }else {
+          return (<img src ={image} width="200px" height="200px" alt='logo'/>)
+      }
+    }
+
+    return (
+        <div>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Voir le post
+        </Button>
+        <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+            {props.Users.phrases_of_day}
+            
+            </DialogTitle>
+            <DialogContent dividers>
+            <Typography gutterBottom>
+                
+                {displayImg(props.Users.image)} 
+            </Typography>
+            </DialogContent>
+            <DialogActions>
+            <Button autoFocus onClick={handleClose} color="primary">
+                Mettre en avant
+            </Button>
+            </DialogActions>
+        </Dialog>
+        </div>
+    );
+}
+
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -48,37 +97,3 @@ const DialogActions = withStyles((theme) => ({
     padding: theme.spacing(1),
   },
 }))(MuiDialogActions);
-
-export default function Modal(props) {
-  const [open, setOpen] = React.useState(false);
-console.log(props)
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Mettre en avant
-      </Button>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {props.Users.phrases_of_day}
-        </DialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-                {props.Users.image}
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Mettre en avant
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-}

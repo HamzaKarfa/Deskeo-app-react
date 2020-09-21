@@ -18,7 +18,7 @@ export default function Users() {
         var formData = new FormData();
         formData.append("image", image );
         formData.append('name', phrase);
-        if (image !== '') {
+        if (image !== '' || phrase !== '') {
             console.log(image)
             fetch('http://localhost:3003/newUsers',{
                 method:'post',

@@ -11,39 +11,34 @@ import ListData from './ListData'
 
 
 
-
-
 function Content() {
   const classes = useStyles();
 
-
-
-
-  return (
-      <>
-    <Paper className={classes.paper}>
-      <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
-        <Toolbar>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs>
-              <h3>Liste de tous les utilisateurs </h3>
+    return (
+    <>
+        <Paper className={classes.paper}>
+        <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
+            <Toolbar>
+            <Grid container spacing={2} alignItems="center">
+                <Grid item xs>
+                <h3>Liste de tous les utilisateurs </h3>
+                </Grid>
+                <Grid item>
+                <Tooltip title="Reload">
+                    <IconButton>
+                    <RefreshIcon className={classes.block} color="inherit" />
+                    </IconButton>
+                </Tooltip>
+                </Grid>
             </Grid>
-            <Grid item>
-              <Tooltip title="Reload">
-                <IconButton>
-                  <RefreshIcon className={classes.block} color="inherit" />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.contentWrapper}>
-          <ListData/>
-      </div>
-    </Paper>
+            </Toolbar>
+        </AppBar>
+        <div className={classes.contentWrapper}>
+            <ListData/>
+        </div>
+        </Paper>
     </>
-  );
+    );
 }
 
 const useStyles = makeStyles((theme) => ({
