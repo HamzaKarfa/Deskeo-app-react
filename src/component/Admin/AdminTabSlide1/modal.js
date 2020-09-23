@@ -10,18 +10,18 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
-import { addPhrase } from "../../action";
-
+import { updateContentCC1 } from "../../../action";
+import '../Admin.css'
 
 const stateModal = (state, props) => {
   return { props: props, state : state };
 };
 const dispatchModal =(dispatch,props) =>{
   return {
-      addPhrases: () => { dispatch(addPhrase(props.Users)) },
+    updateStateContentCC1: () => { dispatch(updateContentCC1(props.Users)) },
     }
  };
-const ModalConnect = ({addPhrases,props}) => {
+const ModalConnect = ({updateStateContentCC1,props}) => {
 
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -31,7 +31,7 @@ const ModalConnect = ({addPhrases,props}) => {
         setOpen(false);
     };
     const ActionButton = () => {
-      addPhrases()
+      updateStateContentCC1()
       setOpen(false);
     };
     
@@ -44,30 +44,30 @@ const ModalConnect = ({addPhrases,props}) => {
     }
 
     return (
-        <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Voir le post
-        </Button>
-        <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-            {props.Users.phrases_of_day}
-            
-            </DialogTitle>
-            <DialogContent dividers>
-            <Typography gutterBottom>
-                
-                {displayImg(props.Users.image)} 
-            </Typography>
-            </DialogContent>
-            <DialogActions>
-              <Link to="/">
-                <Button autoFocus onClick={ActionButton} to="/" color="primary">
-                    Mettre en avant
+            <div>
+                <Button variant="outlined" color="primary" onClick={handleClickOpen} style={{height:'50px', width:'150px'}}>
+                    Voir le post
                 </Button>
-              </Link>
-            </DialogActions>
-        </Dialog>
-        </div>
+                <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+
+                    <DialogTitle id="customized-dialog-title" className='modalTitle' >
+                        "{props.Users.phrases_of_day}"
+                        
+                    </DialogTitle>
+                    <DialogContent dividers className='modalTitle'>
+                        <Typography gutterBottom>
+                            {displayImg(props.Users.image)} 
+                        </Typography>
+                    </DialogContent>
+                    <DialogActions>
+                        <Link to="/">
+                            <Button autoFocus onClick={ActionButton} to="/" color="primary">
+                                Mettre en avant
+                            </Button>
+                        </Link>
+                    </DialogActions>
+                </Dialog>
+            </div>
     );
 }
 

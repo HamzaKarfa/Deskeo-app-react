@@ -1,6 +1,6 @@
 import React from 'react';
 import QRCode from "react-qr-code";
-import './home.css'
+import '../home.css'
 
 export default function CardQrCode() {
 
@@ -9,7 +9,7 @@ export default function CardQrCode() {
             <div class="qr-wrapper">
                 <div class="message-box">
                     <div class="message-box_emoji"><span>🤳</span></div>
-                    <p class="message-box_text">Ajoutez votre phrase du jour</p>
+                    <p class="message-box_text">Envoyez votre phrase et votre image du jour</p>
                 </div>
             </div>
             <div>

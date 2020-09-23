@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './home.css';
+import '../home.css';
 
-const stateCardComponent = (state) => {
+const stateFullScreenImage = (state) => {
     return { state : state };
 };
 
-const CardComponentConnect = ({state}) => {
+const FullScreenImageConnect = ({state}) => {
     function displayImg() {
         if (state.SelectDay.image === null) {
             return(<img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" className='imageHome' alt="Logo" style={{height:'150px'}} />)
@@ -19,7 +19,7 @@ const CardComponentConnect = ({state}) => {
             <div class="item item_perspective-inverse">
                 <div class="item_content-wrapper">
                     <div class="availability">
-                        <p className='phraseParagraphe'>{state.SelectDay.phrase}</p>
+                        <p className='phraseParagraphe'>"{state.SelectDay.phrase}"</p>
                         {displayImg()}
                     </div>
                 </div>
@@ -28,9 +28,9 @@ const CardComponentConnect = ({state}) => {
     );
 }
 
-const CardComponent = connect(stateCardComponent)(CardComponentConnect)
+const FullScreenImage = connect(stateFullScreenImage)(FullScreenImageConnect)
 
-export default CardComponent
+export default FullScreenImage
 
 
 

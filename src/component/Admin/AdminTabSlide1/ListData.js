@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Modal from './modal';
+import '../Admin.css'
 
 export default function ListData() {
     const classes = useStyles();
@@ -27,9 +28,9 @@ export default function ListData() {
     })      
     function displayImg(image){
         if (image === null) {
-            return <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="50px" height="50px" alt='logo'/>
+            return <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="70px" height="80px" alt='logo'/>
         }else {
-            return (<img src ={image} width="60px" height="60px" alt='logo'/>)
+            return (<img src ={image} width="80px" height="80px" alt='logo'/>)
         }
     }
 
@@ -41,10 +42,11 @@ export default function ListData() {
                     <ListItemAvatar className={classes.img}>
                         {displayImg(Users[key].image)}
                     </ListItemAvatar>
-                    <ListItemText
-                        primary= {Users[key].phrases_of_day}
-                    />
+                    <ListItemText className="textList">
+                        "{Users[key].phrases_of_day}"
+                    </ListItemText>
                     <Modal Users={Users[key]} key={key}/>
+ 
                 </ListItem>  
                 <Divider variant="inset" component="li" />
             </>
@@ -61,5 +63,8 @@ const useStyles = makeStyles((theme) => ({
     },
     img:{
         margin:'10px'
+    },
+    text:{
+        fontStyle: 'italic'
     }
   }));

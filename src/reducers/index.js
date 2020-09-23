@@ -7,9 +7,8 @@ const initialState = {
    
 function rootReducer(state = initialState, action) {
     let newState = null
-
     switch (action.type) {
-      case 'ADD_PHRASE':
+      case 'UPDATE_CONTENT_CC1':
         newState = {
           ...state,
           SelectDay : {
@@ -19,6 +18,16 @@ function rootReducer(state = initialState, action) {
         }
         console.log(newState)
         return newState
+        case 'UPDATE_CONTENT_CC2':
+          newState = {
+            ...state,
+            SelectDay : {
+              phrase : action.payload.phrases_of_day,
+              image: action.payload.image
+            }
+          }
+          console.log(newState)
+          return newState
         default: 
             return state
     

@@ -3,30 +3,38 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import './users.css'
+import './style.css'
 
-export default function Users() {
+function ContentSlide2() {
     const classes = useStyles();
-    const [phrase, setPhrase] = useState('');
     const [image, setImage] = useState('');
 
     function addFile(){
         var formData = new FormData();
         formData.append("image", image );
-        formData.append('name', phrase);
-        if (image !== '' || phrase !== '') {
-            fetch('http://localhost:3003/newUsers',{
+        if (image !== '') {
+            fetch('http://localhost:3003/newImage',{
                 method:'post',
                 body: formData
             })
-            alert("Merci d'avoir participé")
+            alert("Image ajouté ")
             window.location.href = ""
         }
     }
     function displayImg(){
         if (image !== '') {
-            return (<img src={URL.createObjectURL(image)} style={{ height: "100px" }} className='usersImage' alt=''/>)
+            console.log(image)
+            return (
+                <div className='imageList'>
+                {Object.keys(image).map((key)=> 
+                    <img src={URL.createObjectURL(image[key])} style={{ width: "100px" }} className='usersImage' alt=''/>
+                )}
+                </div>
+            )
         }
+    }
+    function setAllImage(ArrayFile){
+        setImage(ArrayFile)
     }
 
     return (
@@ -34,26 +42,17 @@ export default function Users() {
             <CssBaseline />
             <div className={classes.paper}>
                 <header>
-                <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" class="toggle-app" title="Click to toggle view" alt='logo'/>
+                    <h3>Selctionner l'image</h3>
                 </header>
                 <div style={{marginTop:'20px'}}>
                     <form name='form' action="" method='post' style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
-                        <textarea 
-                                style={{                         
-                                    width: '120%',  height: '100px',
-                                    padding: '12px 20px',  boxSizing: 'border-box',
-                                    border: '2px solid #ccc',  borderRadius: '4px',
-                                    backgroundColor: '#f8f8f8',  resize: 'none'
-                                }}
-                            name="phrase" 
-                            onChange={(e)=> setPhrase(e.target.value)} 
-                            type="textarea"
-                            placeholder="Saisissez votre phrase"
-                        />
                          {displayImg()}
                         <Button variant="contained" component="label" style={{margin: '10px',}} >
                             Selectionner une image
-                            <input id="id-for-upload-file" name="file" onChange={(e)=> setImage(e.target.files[0])} type="file"  style={{ display: "none" }}/>
+                            <input id="id-for-upload-file" name="file" multiple="multiple" onChange={(e)=> {
+                                    setAllImage(e.target.files)
+                                }
+                                } type="file"  style={{ display: "none" }}/>
                         </Button>
 
                         <Button    
@@ -72,8 +71,10 @@ export default function Users() {
             </div>
         </Container>
     )
-
 }
+
+export default ContentSlide2
+
     const useStyles = makeStyles((theme) => ({
         paper: {
             marginTop: theme.spacing(8),

@@ -23,7 +23,7 @@ function Content() {
               <Toolbar>
               <Grid container spacing={2} alignItems="center">
                   <Grid item xs>
-                  <h3>Liste de tous les utilisateurs </h3>
+                    <h3>Liste de tous les posts </h3>
                   </Grid>
                   <Grid item>
                   <Tooltip title="Reload">

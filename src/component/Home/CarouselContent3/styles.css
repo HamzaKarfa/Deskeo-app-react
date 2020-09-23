@@ -1,0 +1,45 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .room {
+    min-height: 300px;
+    position: relative;
+    background-position: center bottom;
+    background-size: cover;
+    padding: 40px 0;
+    color: #000;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  
+  .room::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  .room .content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .room .availibility_percentage {
+    margin: 0 auto;
+    width: 100px;
+    height: 20px;
+    background-color: #fff;
+  }
+  
+  .room .availibility_percentage div {
+    height: 20px;
+    background-color: green;
+  }
+  

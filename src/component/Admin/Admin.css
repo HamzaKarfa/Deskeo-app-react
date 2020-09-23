@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap");
+
+
+.modalTitle{
+text-align: center;
+}   
+.textList{
+    margin: 20px;
+text-align: center;
+width: 500px;
+}
+.modalContent{
+    text-align: center;
+}   
+.MuiListItem-root{
+    justify-content: center !important;
+}
+.makeStyles-root-15 {
+
+    width: 75% !important;
+}
+.Header{
+    background-color: lightgreen;
+}
+.PrivateTabIndicator-colorSecondary-4{
+    background-color: Green !important;
+}
+.MuiAppBar-colorPrimary{
+    background-color: green !important;
+    opacity: 0.7;
+}
+.Nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.NavTitle{
+    padding: 20px;
+    margin: 0;
+    font-size: 14pt;
+}

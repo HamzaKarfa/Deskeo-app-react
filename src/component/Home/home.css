@@ -13,6 +13,7 @@ body {
   padding: 0;
   font-family: var(--source-sans-pro);
   color: var(--black);
+  height: 100vh;
 }
 
 header {
@@ -424,9 +425,8 @@ main.hl-rooms .item {
   }
 }
 main .bloc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
   background: var(--white);
   padding: 20px;
   margin: 10px;
@@ -435,7 +435,7 @@ main .bloc {
 }
 
 .qrCodeBox{
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .phraseSection{
@@ -444,14 +444,16 @@ main .bloc {
     /* border: black 2px solid; */
 }
 .phraseParagraphe{
- text-align: center;
- padding: 20px;
- /* border: red 2px solid; */
-
+  font-family: var(--source-sans-pro);
+  font-style: italic;
+  font-size: 16pt;
+  text-align: center;
+  padding: 10px;
 }
 .imageHome{
- /* border: blue 2px solid; */
- margin: 20px;
-  box-shadow: var(--box-shadow);
 
+  margin: 0 auto;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: center;
 }
