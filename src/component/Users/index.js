@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from "react-router-dom";
 
 
 export default function Users() {
@@ -16,18 +15,17 @@ export default function Users() {
         formData.append("image", image );
         formData.append('name', phrase);
         if (image !== '' || phrase !== '') {
-            console.log(image)
             fetch('http://localhost:3003/newUsers',{
                 method:'post',
                 body: formData
             })
             alert("Merci d'avoir participé")
-            window.location.reload(true);
+            window.location.href = ""
         }
     }
     function displayImg(){
         if (image !== '') {
-            return (<img src={URL.createObjectURL(image)} style={{ width: "100px" }}/>)
+            return (<img src={URL.createObjectURL(image)} style={{ width: "100px" }} alt=''/>)
         }
     }
 
@@ -87,7 +85,7 @@ export default function Users() {
             marginTop: theme.spacing(1),
         },
         submit: {
-            background: 'linear-gradient(45deg, darkblue , purple 75%)',
+            background: '#1db996',
             border: 0,
             borderRadius: 3,
             boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

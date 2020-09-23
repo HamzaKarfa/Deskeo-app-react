@@ -343,13 +343,19 @@ main.main .rooms .list .item_content-wrapper .progress p {
   display: none;
 }
 main.main .rooms .sidebar {
-  width: 20%;
-  box-shadow: none;
-  padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    box-shadow: none;
+    padding: 0;
 }
 main.main .rooms .sidebar .message-box {
-  width: 150%;
-  transform: translateX(-5%);
+    margin: 10px;
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
 }
 main.main .rooms .sidebar .pies-wrapper {
   display: none;
@@ -435,10 +441,17 @@ main .bloc {
 .phraseSection{
     display: flex;
     justify-content: center;
+    /* border: black 2px solid; */
 }
 .phraseParagraphe{
  text-align: center;
+ padding: 20px;
+ /* border: red 2px solid; */
+
 }
 .imageHome{
-    width: 250px;
+ /* border: blue 2px solid; */
+ margin: 20px;
+  box-shadow: var(--box-shadow);
+
 }

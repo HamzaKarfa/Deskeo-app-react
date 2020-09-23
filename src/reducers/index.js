@@ -1,7 +1,7 @@
 const initialState = {
   SelectDay :{
     phrase: 'Phrase du jour',
-    image:'https://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png'
+    image:null
   }
 }
    

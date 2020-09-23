@@ -39,7 +39,7 @@ const ModalConnect = ({addPhrases,props}) => {
       if (image === null) {
           return <p>Aucune Image</p>
       }else {
-          return (<img src ={image} width="200px" height="200px" alt='logo'/>)
+          return (<img src ={image} width="auto" height="200px" alt='logo'/>)
       }
     }
 

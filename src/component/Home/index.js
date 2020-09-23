@@ -16,7 +16,7 @@ import './home.css'
                 <CardComponent/>
             
               </section>
-              <section class="rooms bloc">
+              <section class="rooms bloc" style={{width:"100vh"}}>
               <CardQrCode/>
               </section>
         </main>

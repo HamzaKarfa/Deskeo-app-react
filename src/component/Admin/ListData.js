@@ -27,9 +27,9 @@ export default function ListData() {
     })      
     function displayImg(image){
         if (image === null) {
-            return 
+            return <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="50px" height="50px" alt='logo'/>
         }else {
-            return (<img src ={image} width="50px" height="50px" alt='logo'/>)
+            return (<img src ={image} width="60px" height="60px" alt='logo'/>)
         }
     }
 
@@ -37,8 +37,8 @@ export default function ListData() {
     <List className={classes.root}>
         {Object.keys(Users).map((key)=> 
             <>
-                <ListItem alignItems="center" className={classes.item}>
-                    <ListItemAvatar>
+                <ListItem alignItems="center" >
+                    <ListItemAvatar className={classes.img}>
                         {displayImg(Users[key].image)}
                     </ListItemAvatar>
                     <ListItemText
@@ -59,4 +59,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection:'column',
       width: '50%',
     },
+    img:{
+        margin:'10px'
+    }
   }));
