@@ -10,7 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
-import { updateContentCC1 } from "../../../action";
+import { updateContentCC2 } from "../../../action";
+import { updateContentCC3 } from "../../../action";
 import '../Admin.css'
 
 const stateModal = (state, props) => {
@@ -18,10 +19,11 @@ const stateModal = (state, props) => {
 };
 const dispatchModal =(dispatch,props) =>{
   return {
-    updateStateContentCC1: () => { dispatch(updateContentCC1(props.Users)) },
+    updateStateContentCC2: () => { dispatch(updateContentCC2(props.Users)) },
+    updateStateContentCC3:()=>{ dispatch(updateContentCC3(props.Users)) }
     }
  };
-const ModalConnect = ({updateStateContentCC1,props}) => {
+const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3}) => {
 
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -30,8 +32,12 @@ const ModalConnect = ({updateStateContentCC1,props}) => {
     const handleClose = () => {
         setOpen(false);
     };
-    const ActionButton = () => {
-      updateStateContentCC1()
+    const ActionButton = (button) => {
+      if (button === '1') {
+        updateStateContentCC2()
+      } else {
+        updateStateContentCC3()
+      }
       setOpen(false);
     };
     
@@ -46,26 +52,23 @@ const ModalConnect = ({updateStateContentCC1,props}) => {
     return (
             <div>
                 <Button variant="outlined" color="primary" onClick={handleClickOpen} style={{height:'50px', width:'150px'}}>
-                    Voir le post
+                    Voir l'image
                 </Button>
                 <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
 
-                    <DialogTitle id="customized-dialog-title" className='modalTitle' >
-                        "{props.Users.phrases_of_day}"
-                        
-                    </DialogTitle>
                     <DialogContent dividers className='modalTitle'>
                         <Typography gutterBottom>
-                            {displayImg(props.Users.image)} 
+                            {displayImg(props.Users.images_path)} 
                         </Typography>
                     </DialogContent>
-                    <DialogActions>
-                        <Link to="/admin">
-                            <Button autoFocus onClick={ActionButton} to="/" color="primary">
-                                Mettre en avant
+                    <MuiDialogActions>
+                            <Button onClick={() => {ActionButton('1')}}  variant="outlined" color="primary">
+                                Mettre sur la slide image unique
                             </Button>
-                        </Link>
-                    </DialogActions>
+                            <Button onClick={() => {ActionButton('2')} }  variant="outlined" color="primary">
+                                Mettre sur la slide multiple images
+                            </Button>
+                    </MuiDialogActions>
                 </Dialog>
             </div>
     );

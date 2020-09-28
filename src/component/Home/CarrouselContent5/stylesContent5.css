@@ -1,0 +1,31 @@
+.meteo{
+width: 300px;
+height: 80vh !important;
+padding-right: 40px;
+}
+.sdr{
+height: 1100px !important;
+width: 200px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 30px;
+}
+.blocMeteo{
+padding: 35px;
+
+}
+.allContent{
+    padding: 50px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.box{
+    height:  1000px !important;
+}

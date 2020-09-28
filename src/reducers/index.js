@@ -1,17 +1,21 @@
 const initialState = {
-  SelectDay :{
-    phrase: 'Phrase du jour',
+  ImageCarrouselContent1 :{
+    phrase: null,
     image:null
-  }
+  },
+  ImageCarrouselContent2 :{
+    image: null
+  },
+  ImageCarrouselContent3 :[]
 }
    
 function rootReducer(state = initialState, action) {
-    let newState = null
+    let newState
     switch (action.type) {
       case 'UPDATE_CONTENT_CC1':
         newState = {
           ...state,
-          SelectDay : {
+          ImageCarrouselContent1 : {
             phrase : action.payload.phrases_of_day,
             image: action.payload.image
           }
@@ -20,19 +24,25 @@ function rootReducer(state = initialState, action) {
         return newState
         case 'UPDATE_CONTENT_CC2':
           newState = {
-            ...state,
-            SelectDay : {
-              phrase : action.payload.phrases_of_day,
-              image: action.payload.image
+            ...state,              
+            ImageCarrouselContent2 : {
+              image : action.payload.images_path
             }
           }
           console.log(newState)
           return newState
+          case 'UPDATE_CONTENT_CC3':
+            newState = {
+              ...state,   
+              ImageCarrouselContent3: state.ImageCarrouselContent3.concat([action.payload.images_path])
+        
+            }
+            console.log(newState.ImageCarrouselContent3.length)
+            return newState
         default: 
             return state
     
     }
-      
   };
 
   export default rootReducer;

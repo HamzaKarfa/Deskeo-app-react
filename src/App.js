@@ -8,12 +8,9 @@ import Users from './component/Users';
 import Home from './component/Home/index';
 import Admin from './component/Admin/index.js';
 export default function App() {
+  
   return (
     <Router>
-
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/admin">
             <Admin />

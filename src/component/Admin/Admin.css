@@ -19,11 +19,18 @@ width: 500px;
 
     width: 75% !important;
 }
+.makeStyles-root-47{
+
+    width: 75% !important;
+}
+.makeStyles-root-13{
+    width: 75% !important;
+}
 .Header{
     background-color: lightgreen;
 }
 .PrivateTabIndicator-colorSecondary-4{
-    background-color: Green !important;
+    background-color:darkgreen !important;
 }
 .MuiAppBar-colorPrimary{
     background-color: green !important;
@@ -38,4 +45,24 @@ width: 500px;
     padding: 20px;
     margin: 0;
     font-size: 14pt;
+}
+.link{
+    color: white;
+    text-align: start;
+    padding-left: 10px;
+    text-decoration: none;
+}
+.buttonLink{
+    color: white !important;
+    border: solid 1px white !important;
+    background-color: rgb(15, 182, 15) !important;
+}
+.tabHeader{
+    font-size: 8pt !important;
+
+}
+.tabList{
+    border: solid 1px black;
+    flex-direction: column !important;
+    flex-wrap: wrap;
 }

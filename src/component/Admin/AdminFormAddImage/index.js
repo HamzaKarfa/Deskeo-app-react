@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import './style.css'
+import './style.css';
+
 
 function ContentSlide2() {
     const classes = useStyles();
@@ -11,19 +12,21 @@ function ContentSlide2() {
 
     function addFile(){
         var formData = new FormData();
-        formData.append("image", image );
+        Object.keys(image).map((key)=> 
+            formData.append("image"+key, image[key] )   
+        )
         if (image !== '') {
-            fetch('http://localhost:3003/newImage',{
+            console.log(image,formData)
+            fetch('http://localhost:3004/newImage',{
                 method:'post',
                 body: formData
             })
             alert("Image ajouté ")
-            window.location.href = ""
         }
+        
     }
     function displayImg(){
         if (image !== '') {
-            console.log(image)
             return (
                 <div className='imageList'>
                 {Object.keys(image).map((key)=> 
@@ -54,7 +57,6 @@ function ContentSlide2() {
                                 }
                                 } type="file"  style={{ display: "none" }}/>
                         </Button>
-
                         <Button    
                             type="submit"
                             fullWidth
@@ -65,7 +67,7 @@ function ContentSlide2() {
                                 e.preventDefault()
                                 addFile()
                             }}
-                        >Valider </Button>
+                            >Valider </Button>
                     </form>
                 </div>
             </div>
