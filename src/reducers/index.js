@@ -6,7 +6,14 @@ const initialState = {
   ImageCarrouselContent2 :{
     image: null
   },
-  ImageCarrouselContent3 :[]
+  ImageCarrouselContent3 :[],
+
+  SDR:{
+    rooms: {},
+    loading: true,
+    idle: false,
+  }
+
 }
    
 function rootReducer(state = initialState, action) {
@@ -38,6 +45,34 @@ function rootReducer(state = initialState, action) {
         
             }
             console.log(newState.ImageCarrouselContent3.length)
+            return newState
+          case 'ADD_ROOM':
+            newState = {
+              ...state,  
+              SDR: {
+              ...state.SDR,  
+                rooms : action.payload
+              } 
+            }
+            console.log(newState)
+            return newState
+          case 'UPDATE_LOADING':
+            newState = {
+              ...state,   
+              SDR: {
+                ...state.SDR,  
+                loading : action.payload
+                } 
+            }
+              return newState
+          case 'UPDATE_IDLE':
+            newState = {
+              ...state,   
+              SDR: {
+                ...state.SDR,  
+                idle : action.payload
+                } 
+            }
             return newState
         default: 
             return state

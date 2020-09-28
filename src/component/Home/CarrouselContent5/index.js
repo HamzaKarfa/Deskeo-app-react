@@ -1,16 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useMemo } from "react";
 import { fetchRooms } from "./deskeo";
 import "./stylesContent5.css";
+import { connect } from 'react-redux';
+import { setRoom } from "../../../action";
+import { setLoading } from "../../../action";
+import { setIdle } from "../../../action";
 
-const SDRMeteo =React.memo( function SDRMeteo(props) { 
-    const [rooms, setRooms] = useState({});
-    const [loading, setLoading] = useState(true);
+
+const stateSDRMeteo = (state) => {
+    return { state : state };
+};
+const dispatchSDRMeteo =(dispatch,state) =>{
+    return {
+        setRooms: (e) => { dispatch(setRoom(e)) },
+        setLoadings:(e)=>{ dispatch(setLoading(e)) },
+        setIdles:(e)=>{ dispatch(setIdle(e)) }
+      }
+   };
+function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
+    // const [rooms, setRooms] = useState({});
+    // const [loading, setLoading] = useState(true);
     const [error, setError] = useState({});
-    const [idle, setIdle] = useState(false);
+    // const [idle, setIdle] = useState(false);
 
     useEffect(() => {
 
-        if (!idle) {
+        if (!state.SDR.idle) {
+            
             (async _ => {
                 try {
                     const today = new Date();
@@ -18,26 +34,28 @@ const SDRMeteo =React.memo( function SDRMeteo(props) {
                     tomorrow.setDate(today.getDate() + 1);
 
                     setRooms(
-                    await fetchRooms(
-                        {
-                        start: today.toJSON().slice(0, 10),
-                        end: tomorrow.toJSON().slice(0, 10)
-                        },
-                        _ => setLoading(false)
+                        await fetchRooms(
+                            {
+                            start: today.toJSON().slice(0, 10),
+                            end: tomorrow.toJSON().slice(0, 10)
+                            },
+                            _ => setLoading(false)
                         )
-                        );
+                    );
 
                 } catch (error) {
                     setError(error);
-                    setLoading(false);
+                    setLoadings(false);
                     throw error;
                 }
             })();
-            setIdle(true);
+            setIdles(true);
+        }
+        if (state.SDR.idle){
+            displayMeteo(document, 'script', 'weatherwidget-io-js')
         }
     }, 
-    [idle],
-    
+    [state.SDR.idle],
     );
     function displayPlaceNumber(roomName){
         if (roomName === 'Lyon - le Bouchon') {
@@ -46,7 +64,7 @@ const SDRMeteo =React.memo( function SDRMeteo(props) {
             return '8'
         } else if (roomName === 'Lyon - Salle de réunion - 502' ) {
             return '8'
-        }else{
+        }else {
             return '30'
         }
     }
@@ -62,30 +80,32 @@ const SDRMeteo =React.memo( function SDRMeteo(props) {
         }
     }
     function displayRoomList(){
-        return (
-            <>
-            {Object.keys(rooms).map(roomId => {
-                return (
-                <div class="item">
-                  <div class="item_content-wrapper">
-                    <h1>{rooms[roomId].room.name}</h1>
-                    <div class="availability">
-                      <p style={{color:displayColor(rooms[roomId].room.name)}}>{displayPlaceNumber(rooms[roomId].room.name)} personnes</p>
-                      <p>de 9h à 11h 30</p>
-                      <p>de 15h à 19h</p>
+        if (state.SDR.rooms === undefined) {
+            
+        } else { 
+            return (
+                Object.keys(state.SDR.rooms).map(roomId => {
+                    return (
+                    <div class="item">
+                    <div class="item_content-wrapper">
+                        <h1>{state.SDR.rooms[roomId].room.name}</h1>
+                        <div class="availability">
+                        <p style={{color:displayColor(state.SDR.rooms[roomId].room.name)}}>{displayPlaceNumber(state.SDR.rooms[roomId].room.name)} personnes</p>
+                        <p>de 9h à 11h 30</p>
+                        <p>de 15h à 19h</p>
+                        </div>
+                        <div class="progress">
+                        <p>disponibilité</p>
+                        <div class="progress_wrapper">
+                            <div class="progress_bar" style={{ width:state.SDR.rooms[roomId].availibility_percentage + "%", backgroundColor:displayColor(state.SDR.rooms[roomId].room.name)}}></div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="progress">
-                      <p>disponibilité</p>
-                      <div class="progress_wrapper">
-                        <div class="progress_bar" style={{ width:rooms[roomId].availibility_percentage + "%", backgroundColor:displayColor(rooms[roomId].room.name)}}></div>
-                      </div>
                     </div>
-                  </div>
-                </div>
-                )
-            })}
-            </>
-        )
+                    )
+                })
+            )
+        }
     }
     function displayMeteo(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -95,6 +115,7 @@ const SDRMeteo =React.memo( function SDRMeteo(props) {
             js.src = 'https://weatherwidget.io/js/widget.min.js';
             fjs.parentNode.insertBefore(js, fjs);
         }
+        return
     }
     return (
     <div className='allContent'>
@@ -129,5 +150,7 @@ const SDRMeteo =React.memo( function SDRMeteo(props) {
         </div>
     </div>
     );
-})
+}
+const SDRMeteo = connect(stateSDRMeteo,dispatchSDRMeteo)(SDRMeteoConnect)
+
 export default SDRMeteo

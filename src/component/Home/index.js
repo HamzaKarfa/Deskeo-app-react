@@ -12,7 +12,7 @@ import Carousel from 'react-material-ui-carousel';
 const stateHome = (state) => {
     return { state : state };
 };
-const HomeConnect =React.memo( function HomeConnect({state, props}) { 
+ const HomeConnect = ({state}) => {
 
     function slideImage(){
         if ( state.ImageCarrouselContent1.image !== null || state.ImageCarrouselContent1.phrase !== null) {
@@ -61,7 +61,7 @@ const HomeConnect =React.memo( function HomeConnect({state, props}) {
     var items = [
         {  content: 
             <main className="first container">
-                   <SDRAppMeteo/>
+                    <SDRAppMeteo/>
             </main>
         },
         {  content: 
@@ -91,7 +91,7 @@ const HomeConnect =React.memo( function HomeConnect({state, props}) {
             </footer>
         </>
     );
-})
+}
 
 const Home = connect(stateHome)(HomeConnect)
 

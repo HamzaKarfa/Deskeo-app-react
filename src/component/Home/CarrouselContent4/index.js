@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { fetchRooms } from "./deskeo";
+import { connect } from 'react-redux';
+import { setRoom } from "../../../action";
+import { setLoading } from "../../../action";
+import { setIdle } from "../../../action";
 
-const SDR =React.memo( function SDR(props) { 
-    const [rooms, setRooms] = useState({});
-    const [loading, setLoading] = useState(true);
+
+
+const stateSDR = (state) => {
+    return { state : state };
+};
+const dispatchSDR =(dispatch,state) =>{
+    return {
+        setRooms: (e) => { dispatch(setRoom(e)) },
+        setLoadings:(e)=>{ dispatch(setLoading(e)) },
+        setIdles:(e)=>{ dispatch(setIdle(e)) }
+      }
+   };
+
+function SDRConnect({state, setRooms, setLoadings,setIdles}) {
+    // const [rooms, setRooms] = useState({});
+    // const [loading, setLoading] = useState(true);
     const [error, setError] = useState({});
-    const [idle, setIdle] = useState(false);
+    // const [idle, setIdle] = useState(false);
     
     const Emoji = [ '👍', '👍', '🤔', '🥵' ];
 
     useEffect(() => {
-        if (!idle) {
+
+        if (!state.SDR.idle) {
+            
             (async _ => {
                 try {
                     const today = new Date();
@@ -19,43 +38,45 @@ const SDR =React.memo( function SDR(props) {
                     tomorrow.setDate(today.getDate() + 1);
 
                     setRooms(
-                    await fetchRooms(
-                        {
-                        start: today.toJSON().slice(0, 10),
-                        end: tomorrow.toJSON().slice(0, 10)
-                        },
-                        _ => setLoading(false)
+                        await fetchRooms(
+                            {
+                            start: today.toJSON().slice(0, 10),
+                            end: tomorrow.toJSON().slice(0, 10)
+                            },
+                            _ => setLoading(false)
                         )
-                        );
+                    );
+
                 } catch (error) {
                     setError(error);
-                    setLoading(false);
+                    setLoadings(false);
                     throw error;
                 }
             })();
-            setIdle(true);
+            setIdles(true);
         }
     }, 
-    [idle],
+    [state.SDR.idle],
     );
-    if (!loading){
-        displayPercent()
+    if (state.SDR.loading === true){
+        // displayPercent()
     }
     function displayPercent(){
         var ppc = document.querySelector('.progress-pie-chart')
         var percent = (totalPercent()/4)
         var deg = 360*percent/100;
         
-            if (percent > 50) {
+            if (percent > 50 && ppc !== null) {
+                console.log(ppc)
                 ppc.classList.add('gt-50');
         }
         document.querySelector('.ppc-progress-fill').style.transform = 'rotate('+ deg +'deg)';
-        document.querySelector('.ppc-percents span').innerHTML = percent+'%';
+        // document.querySelector('.ppc-percents span').innerHTML = percent+'%';
     }
     function totalPercent(){
         let total = 0
-        Object.keys(rooms).map(roomId => {
-            total += parseInt(rooms[roomId].availibility_percentage,10)
+        Object.keys(state.SDR.rooms).map(roomId => {
+            total += parseInt(state.SDR.rooms[roomId].availibility_percentage,10)
         })
         return total
     }
@@ -106,17 +127,17 @@ const SDR =React.memo( function SDR(props) {
     function displayRoomList(){
         return (
             <>
-            {Object.keys(rooms).map(roomId => {
+            {Object.keys(state.SDR.rooms).map(roomId => {
                 return (
-                <div className={displayImageRoom(rooms[roomId].room.name)}  key={roomId}>
+                <div className={displayImageRoom(state.SDR.rooms[roomId].room.name)}  key={roomId}>
                     <div className="item_image-wrapper">
-                        <img src={rooms[roomId].room.image} alt=''/>
+                        <img src={state.SDR.rooms[roomId].room.image} alt=''/>
                     </div>
                     <div className="item_content-wrapper">
-                        <h1>{rooms[roomId].room.name}</h1>
+                        <h1>{state.SDR.rooms[roomId].room.name}</h1>
                         <div className="availability">
-                            <p style={{color: displayColor(rooms[roomId].room.name)}}>{displayPlaceNumber(rooms[roomId].room.name)} personnes</p>
-                            {rooms[roomId].availabilities.map((availability, j) => {
+                            <p style={{color: displayColor(state.SDR.rooms[roomId].room.name)}}>{displayPlaceNumber(state.SDR.rooms[roomId].room.name)} personnes</p>
+                            {state.SDR.rooms[roomId].availabilities.map((availability, j) => {
                                 return (<p> de {availability.start } à { availability.end}</p>)     
                             })}
                         </div>
@@ -125,13 +146,13 @@ const SDR =React.memo( function SDR(props) {
                             <div className="progress_wrapper">
                                 <div className="progress_bar" 
                                     style={{
-                                        width: rooms[roomId].availibility_percentage + "%",
-                                        backgroundColor:displayColor(rooms[roomId].room.name)
+                                        width: state.SDR.rooms[roomId].availibility_percentage + "%",
+                                        backgroundColor:displayColor(state.SDR.rooms[roomId].room.name)
                                     }}>
                                 </div>
                             </div>
                             <div className="progress_emoji">
-                                {displayImoji(rooms[roomId].availibility_percentage)}
+                                {displayImoji(state.SDR.rooms[roomId].availibility_percentage)}
                             </div>
                         </div>
                     </div>
@@ -165,7 +186,7 @@ const SDR =React.memo( function SDR(props) {
                         </div>
                         <div class="ppc-percents">
                             <div class="pcc-percents-wrapper">
-                                <span>%</span>
+                                <span>{totalPercent()/4}%</span>
                             </div>
                         </div>
                     </div>
@@ -174,5 +195,7 @@ const SDR =React.memo( function SDR(props) {
         </section>
     </>
     );
-})
+}
+const SDR = connect(stateSDR,dispatchSDR)(SDRConnect)
+
 export default SDR
