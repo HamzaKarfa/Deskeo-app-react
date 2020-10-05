@@ -13,7 +13,7 @@ export default function ListImage() {
     const [Users, setUsers] = useState('');
     useEffect(() => {
         if (Users === '') {
-            fetch('http://localhost:3005/images',{
+            fetch('http://living-app-api.kaffein.agency:3005/images',{
                 mode:'cors'
             })
             .then((response) => { 

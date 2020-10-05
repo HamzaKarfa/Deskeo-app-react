@@ -13,7 +13,7 @@ export default function ListData() {
     const [Users, setUsers] = useState('');
     useEffect(() => {
         if (Users === '') {
-            fetch('http://localhost:3002/users',{
+            fetch('http://living-app-api.kaffein.agency:3002/users',{
                 mode:'cors'
             })
             .then((response) => { 

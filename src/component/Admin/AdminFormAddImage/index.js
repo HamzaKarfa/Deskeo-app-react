@@ -17,7 +17,7 @@ function ContentSlide2() {
         )
         if (image !== '') {
             console.log(image,formData)
-            fetch('http://localhost:3004/newImage',{
+            fetch('http://living-app-api.kaffein.agency:3004/newImage',{
                 method:'post',
                 body: formData
             })

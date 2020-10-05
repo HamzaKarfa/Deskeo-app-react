@@ -15,7 +15,7 @@ export default function Users() {
         formData.append("image", image );
         formData.append('name', phrase);
         if (image !== '' || phrase !== '') {
-            fetch('http://localhost:3003/newUsers',{
+            fetch('http://living-app-api.kaffein.agency:3003/newUsers',{
                 method:'post',
                 body: formData
             })
