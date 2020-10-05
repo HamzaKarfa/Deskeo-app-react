@@ -69,9 +69,9 @@ function SDRConnect({state, setRooms, setLoadings,setIdles}) {
             if (percent > 50 && ppc !== null) {
                 console.log(ppc)
                 ppc.classList.add('gt-50');
+                document.querySelector('.ppc-progress-fill').style.transform = 'rotate('+ deg +'deg)';
+                // document.querySelector('.ppc-percents span').innerHTML = percent+'%';
         }
-        document.querySelector('.ppc-progress-fill').style.transform = 'rotate('+ deg +'deg)';
-        // document.querySelector('.ppc-percents span').innerHTML = percent+'%';
     }
     function totalPercent(){
         let total = 0
@@ -180,9 +180,9 @@ function SDRConnect({state, setRooms, setLoadings,setIdles}) {
             <div class="pies-wrapper">
                 <div class="pie-box">
                     <p>Disponibilité totale</p>
-                    <div className="progress-pie-chart" id='progress-pie-chart'>
+                    <div className="progress-pie-chart gt-50" id='progress-pie-chart'>
                         <div class="ppc-progress">
-                            <div class="ppc-progress-fill"></div>
+                            <div class="ppc-progress-fill" style={{transform:'rotate('+ 360*(totalPercent()/4)/100 +'deg)'}}></div>
                         </div>
                         <div class="ppc-percents">
                             <div class="pcc-percents-wrapper">
@@ -193,6 +193,7 @@ function SDRConnect({state, setRooms, setLoadings,setIdles}) {
                 </div>
             </div>
         </section>
+        {displayPercent()}
     </>
     );
 }

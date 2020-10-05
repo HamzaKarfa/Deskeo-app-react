@@ -57,11 +57,19 @@ const stateHome = (state) => {
             )
         }
     }
-    
+    function displayMeteo(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://weatherwidget.io/js/widget.min.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }
     var items = [
         {  content: 
             <main className="first container">
-                    <SDRAppMeteo/>
+                <SDRAppMeteo/>      
             </main>
         },
         {  content: 

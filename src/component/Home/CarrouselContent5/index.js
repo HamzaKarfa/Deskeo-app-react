@@ -1,12 +1,10 @@
-import React, { useEffect, useState,useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchRooms } from "./deskeo";
 import "./stylesContent5.css";
 import { connect } from 'react-redux';
 import { setRoom } from "../../../action";
 import { setLoading } from "../../../action";
 import { setIdle } from "../../../action";
-
-
 const stateSDRMeteo = (state) => {
     return { state : state };
 };
@@ -51,9 +49,6 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
             })();
             setIdles(true);
         }
-        if (state.SDR.idle){
-            displayMeteo(document, 'script', 'weatherwidget-io-js')
-        }
     }, 
     [state.SDR.idle],
     );
@@ -64,7 +59,7 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
             return '8'
         } else if (roomName === 'Lyon - Salle de réunion - 502' ) {
             return '8'
-        }else {
+        }else{
             return '30'
         }
     }
@@ -107,16 +102,16 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
             )
         }
     }
-    function displayMeteo(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-        return
-    }
+     function displayMeteo(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+
+         if (!d.getElementById(id)) {
+             js = d.createElement(s);
+             js.id = id;
+             js.src = 'https://weatherwidget.io/js/widget.min.js';
+             fjs.parentNode.insertBefore(js, fjs);
+         }
+     }
     return (
     <div className='allContent'>
         <div className="blocMeteo">
@@ -130,7 +125,7 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
                 </div>
                 <div class="meteo">
                     <a class="weatherwidget-io" href="https://forecast7.com/fr/45d764d84/lyon/" data-label_1="LYON" data-label_2="Météo du jour" data-font="Open Sans" data-icons="Climacons Animated" data-days="5" data-theme="pure">LYON Météo du jour</a>
-                    {displayMeteo(document, 'script', 'weatherwidget-io-js')}
+                    {displayMeteo(document,'script','weatherwidget-io-js')}
                 </div>
             </section>
         </div>
