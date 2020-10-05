@@ -39,11 +39,12 @@ function rootReducer(state = initialState, action) {
           console.log(newState)
           return newState
           case 'UPDATE_CONTENT_CC3':
+
             newState = {
               ...state,   
               ImageCarrouselContent3: state.ImageCarrouselContent3.concat([action.payload.images_path])
-        
             }
+            
             return newState
           case 'ADD_ROOM':
             newState = {

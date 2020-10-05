@@ -19,7 +19,7 @@ const dispatchModal =(dispatch,props) =>{
     updateStateContentCC3:()=>{ dispatch(updateContentCC3(props.Users)) }
     }
  };
-const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3}) => {
+const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3,state}) => {
 
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -32,6 +32,7 @@ const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3}) => {
       if (button === '1') {
         updateStateContentCC2()
       } else {
+        console.log(state.ImageCarrouselContent3)
         updateStateContentCC3()
       }
       setOpen(false);
