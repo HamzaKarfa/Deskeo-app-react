@@ -44,7 +44,6 @@ function rootReducer(state = initialState, action) {
               ImageCarrouselContent3: state.ImageCarrouselContent3.concat([action.payload.images_path])
         
             }
-            console.log(newState.ImageCarrouselContent3.length)
             return newState
           case 'ADD_ROOM':
             newState = {

@@ -12,7 +12,7 @@ const CardComponentConnect = ({state}) => {
         if (state.ImageCarrouselContent1.image === null) {
             return(<img src="https://pbs.twimg.com/profile_images/1139094127130402821/dbboP5Op_400x400.png" alt="" style={{width: '100vh',height:'100vh',margin: 'auto'}}/>)
         }else{
-            return(<img src={state.ImageCarrouselContent1.image} alt=''    style={{width: '100vh',height:'100vh',margin: 'auto'}} />)
+            return(<img src={state.ImageCarrouselContent1.image} alt='' style={{width: '100vh',height:'100vh',margin: 'auto'}} />)
         }
     }
     return (
