@@ -32,13 +32,12 @@ const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3,state})
       if (button === '1') {
         updateStateContentCC2()
       } else {
-        if (state.ImageCarrouselContent3.length >= 3) {
+        if (state.ImageCarrouselContent3.length > 3) {
           alert('Vous ne pouvez pas mettre plus de 3 images sur cette slide')
         }else{
           updateStateContentCC3()
         }
         console.log(state.ImageCarrouselContent3)
-        updateStateContentCC3()
       }
       setOpen(false);
     };
