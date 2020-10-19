@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles.css";
+import "./styles2.css";
 import { fetchRooms } from "./deskeo";
 import { connect } from 'react-redux';
 import { setRoom } from "../../../action";
@@ -134,7 +134,7 @@ function SDRConnect({state, setRooms, setLoadings,setIdles}) {
                         <img src={state.SDR.rooms[roomId].room.image} alt=''/>
                     </div>
                     <div className="item_content-wrapper">
-                        <h1>{state.SDR.rooms[roomId].room.name}</h1>
+                        <h1>{state.SDR.rooms[roomId].room.name.substring(6)}</h1>
                         <div className="availability">
                             <p style={{color: displayColor(state.SDR.rooms[roomId].room.name)}}>{displayPlaceNumber(state.SDR.rooms[roomId].room.name)} personnes</p>
                             {state.SDR.rooms[roomId].availabilities.map((availability, j) => {

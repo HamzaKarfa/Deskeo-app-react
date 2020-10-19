@@ -48,11 +48,11 @@ export default function Users() {
                             name="phrase" 
                             onChange={(e)=> setPhrase(e.target.value)} 
                             type="textarea"
-                            placeholder="Saisissez votre phrase"
+                            placeholder="Participez en entrant votre phrase du jour"
                         />
                          {displayImg()}
                         <Button variant="contained" component="label" style={{margin: '10px',}} >
-                            Selectionner une image
+                            Ajouter une image
                             <input id="id-for-upload-file" name="file" onChange={(e)=> setImage(e.target.files[0])} type="file"  style={{ display: "none" }}/>
                         </Button>
 

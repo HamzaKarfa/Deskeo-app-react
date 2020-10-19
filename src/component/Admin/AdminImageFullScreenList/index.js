@@ -11,7 +11,7 @@ import ListImage from './ListImage'
 
 
 
-function Content() {
+function Content(props) {
   const classes = useStyles();
   function Reload(){
     window.location.href = ""
@@ -36,7 +36,14 @@ function Content() {
               </Toolbar>
           </AppBar>
           <div className={classes.contentWrapper}>
-              <ListImage/>
+              <ListImage  Image={props.Image} 
+                          Images={props.Images} 
+                          ImagesId={props.ImagesId} 
+                          varImagesId={props.varImagesId} 
+                          varImages={props.varImages}
+                          varRequest={props.varRequest}
+                          setRequest={props.setRequest}
+              />
           </div>
         </Paper>
     </>

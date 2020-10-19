@@ -11,7 +11,7 @@ import ListData from './ListData'
 
 
 
-function Content() {
+function Content(props) {
   const classes = useStyles();
   function Reload(){
     window.location.href = ""
@@ -36,7 +36,10 @@ function Content() {
               </Toolbar>
           </AppBar>
           <div className={classes.contentWrapper}>
-              <ListData/>
+              <ListData   Phrase={props.Phrase}                             
+                          varRequest={props.varRequest}
+                          setRequest={props.setRequest}
+              />
           </div>
         </Paper>
     </>

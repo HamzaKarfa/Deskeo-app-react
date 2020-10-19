@@ -13,9 +13,13 @@ width: 500px;
     text-align: center;
 }   
 .MuiListItem-root{
-    justify-content: center !important;
+    justify-content: space-around !important;
 }
 .makeStyles-root-15 {
+
+    width: 75% !important;
+}
+.makeStyles-root-25 {
 
     width: 75% !important;
 }
@@ -52,17 +56,43 @@ width: 500px;
     padding-left: 10px;
     text-decoration: none;
 }
-.buttonLink{
+.table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.buttonSend{
+    margin: 10px !important;
+    padding: 10px !important;
+
     color: white !important;
     border: solid 1px white !important;
     background-color: rgb(15, 182, 15) !important;
+
 }
 .tabHeader{
     font-size: 8pt !important;
-
 }
 .tabList{
     border: solid 1px black;
     flex-direction: column !important;
     flex-wrap: wrap;
+}
+.contentTable{
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+}
+
+th{
+    padding: 20px;
+}   
+table{
+    border: solid 2px black;
+    width: 900px;
+}
+.requestResponse{
+    color: rgb(80, 224, 80);
 }

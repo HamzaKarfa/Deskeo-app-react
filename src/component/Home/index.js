@@ -1,67 +1,99 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import CardQrCode from './CarrouselContent1/CardQrCode';
-import CardComponent from './CarrouselContent1/CardComponent';
-import FullScreenImage from './CarrouselContent2/FullScreenImage';
-import FullScreenImages from './CarrouselContent3/FullScreenImage2';
+import React,{useState, useEffect} from 'react';
+ import CardQrCode from './CarrouselContent1/CardQrCode';
+ import CardComponent from './CarrouselContent1/CardComponent';
+ import FullScreenImage from './CarrouselContent2/FullScreenImage';
+ import FullScreenImages from './CarrouselContent3/MultipleFullScreenImage';
 import SDRApp from './CarrouselContent4/';
 import SDRAppMeteo from './CarrouselContent5/';
 import './home.css';
+import './home2.css';
 import Carousel from 'react-material-ui-carousel';
 
-const stateHome = (state) => {
-    return { state : state };
-};
- const HomeConnect = ({state}) => {
-
-    function slideImage(){
-        if ( state.ImageCarrouselContent1.image !== null || state.ImageCarrouselContent1.phrase !== null) {
+ const Home= () => {
+    const [phraseDuJour, setPhraseDuJour] = useState('');
+    const [imageFullScreen, setImageFullScreen] = useState('');
+    const [MultipleImageFullScreen, setMultipleImageFullScreen] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+    
+    
+    useEffect(() => {
+        if (isLoading) {
+            setIsLoading(false)
+            fetch('http://living-app-api.kaffein.agency:3007/getAdminChoice')
+            .then((response)=>{return response.json()})
+            .then((data)=>{
+                if(data[0].phrase !== null && data[0].image !== null){
+                    setPhraseDuJour(data[0]);
+                }
+                if (data[1].imageFullscreen !== null) {
+                    setImageFullScreen(data[1]);
+                }
+                if (data[2] !== null) {
+                    setMultipleImageFullScreen(data[2]);
+                }
+            })
+        }
+    })
+    function addItem() {
+        if (phraseDuJour !== '') {
             items.push(
-                {  content: 
-                    <main className="five">
+                {   content: 
+                    <>
                         <header>
-                            <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" className="toggle-app" title="Click to toggle view" alt='logo'/>
+                            <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="150px" alt=''/>
                         </header>
-                        <div className="wrapper">
-                            <CardQrCode/>
-                            <CardComponent/>
-                        </div>
-                    </main>
-                },
+                        <main className="third">
+                            <CardQrCode/>      
+                            <CardComponent Element={phraseDuJour}/>      
+                        </main>
+                    </>
+                }
             )
-        }
-        if ( state.ImageCarrouselContent2.image !== null ) {
+        } 
+        if (imageFullScreen !== '') {
             items.push(
-            {  content: 
-                <main className="four">
-                    <header>
-                        <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" className="toggle-app" title="Click to toggle view" alt='logo'/>
-                        <p>le 20 novembre 2019 à 19:34</p>
-                    </header>
-                    <FullScreenImage/>
-                </main>
-            },
+                {   content: 
+                    <>
+                        <header>
+                            <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="150px" alt=''/>
+                        </header>
+                        <main className="third">    
+                            <FullScreenImage Element={imageFullScreen}/>      
+                        </main>
+                    </>
+                }
             )
         }
-        if ( state.ImageCarrouselContent3.length !== 0) {
+        if (MultipleImageFullScreen !== '') {
             items.push(
-            {  content: 
-                <main className="thrid">
-                    <header>
-                        <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" className="toggle-app" title="Click to toggle view" alt='logo'/>
-                        <p>le 20 novembre 2019 à 19:34</p>
-                    </header>
-                    <FullScreenImages/>
-                </main>
-            },
+                {   content: 
+                    <>
+                        <header>
+                            <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="150px" alt=''/>
+                        </header>
+                        <main className="third">    
+                            <FullScreenImages Element={MultipleImageFullScreen}/>      
+                        </main>
+                    </>
+                }
             )
         }
+        
     }
     var items = [
         {  content: 
-            <main className="first container">
+            <>
+            <header>
+                <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="150px" alt=''/>
+                <h1 class="title">
+                    Disponibilité des SDR 
+                    <span> Lyon République - le 25/10/2019 à 15h00</span>
+                </h1>
+            </header>
+            <main className="first">
                 <SDRAppMeteo/>      
             </main>
+            </>
         },
         {  content: 
             <main className="second">
@@ -69,10 +101,10 @@ const stateHome = (state) => {
             </main>
         },
     ]
-    slideImage()
+    addItem()
     return (
-        <>
-            <Carousel interval={9000} timeout={3000} animation={'slide'} indicators={false} navButtonsAlwaysInvisible className="container">
+        <div className="Home">
+            <Carousel interval={5000} timeout={1000} animation={'fade'} indicators={false} navButtonsAlwaysInvisible className="Carousel" >
                 {
                     items.map( (item) => {
                         return (
@@ -88,10 +120,10 @@ const stateHome = (state) => {
                 <small>a Knotel company, coded by <span>Ka</span>ffein Agency</small>
                 </p>
             </footer>
-        </>
+        </div>
     );
 }
 
-const Home = connect(stateHome)(HomeConnect)
+
 
 export default Home ;

@@ -8,7 +8,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Modal from './modal';
 import '../Admin.css'
 
-export default function ListData() {
+export default function ListData(props) {
+    console.log(props)
+
     const classes = useStyles();
     const [Users, setUsers] = useState('');
     useEffect(() => {
@@ -30,7 +32,7 @@ export default function ListData() {
         if (image === null) {
             return <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="70px" height="80px" alt='logo'/>
         }else {
-            return (<img src ={image} width="80px" height="80px" alt='logo'/>)
+            return (<img src ={image} width="auto" height="80px" alt='logo'/>)
         }
     }
 
@@ -45,7 +47,12 @@ export default function ListData() {
                     <ListItemText className="textList">
                         "{Users[key].phrases_of_day}"
                     </ListItemText>
-                    <Modal Users={Users[key]} key={key}/>
+                    <Modal  Users={Users[key]} 
+                            key={key} 
+                            Phrase={props.Phrase}
+                            setRequest={props.setRequest}
+                            varRequest={props.varRequest}
+                    />
  
                 </ListItem>  
                 <Divider variant="inset" component="li" />

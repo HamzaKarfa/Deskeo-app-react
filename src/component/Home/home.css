@@ -424,16 +424,6 @@ main.hl-rooms .item {
     transform: perspective(300px) rotateX(0deg) rotateY(-6deg) scale3d(1.02, 1.02, 1.02) translateX(-30px);
   }
 }
-main .bloc {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background: var(--white);
-  padding: 20px;
-  margin: 10px;
-  height: 70vh;
-  box-shadow: var(--box-shadow);
-}
 
 .qrCodeBox{
     margin-top: 30px;
@@ -460,47 +450,12 @@ main .bloc {
 }
 
 
-.Carrousel{
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.Carousel-indicators-2 {
 
+.Carousel-indicators-2 {
   display: none;
 }
-.five {
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.second{
-  width: 100vh;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  align-items: center;
 
-}
-.contentfull{
-  overflow: visible !important;
-}
 
-.four{
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .thrid{
   padding: 0;
   height: 100vh;

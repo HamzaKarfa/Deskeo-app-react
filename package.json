@@ -16,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-material-ui-carousel": "^2.0.0",
     "react-native-qrcode-svg": "^6.0.6",
+    "react-open-weather": "^0.6.2",
     "react-open-weather-widget": "^1.1.0",
     "react-qr-code": "^1.0.2",
     "react-redux": "^7.2.1",

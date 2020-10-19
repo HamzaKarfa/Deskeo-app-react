@@ -1,5 +1,82 @@
-.content .bloc{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.contentPDJ{
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  overflow: hidden;
+  height: 75vh;
+  margin: 20px;
+
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+}
+.contentqrCode{
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  overflow: hidden;
+  height: 75vh;
+  margin: 20px;
+  text-align: center;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+}
+.phrasePDJ{
+  font-family: "Source Sans Pro", sans-serif;
+  max-width: 80%;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 400;
+    text-align: center;
+    color: var(--brand-color);
+}
+.imgPDJ{
+  height: 70%;
+}
+.detail-box{
+  margin: 10px;
+  margin-top: 40px !important;
+}
+
+.message-box {
+  display: flex;
+  align-items: center;
+  background: var(--black);
+  border-radius: 40px;
+  padding: 4% 3%;
+  box-shadow: var(--box-shadow);
+}
+.message-box_emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: var(--box-shadow);
+  margin-right: 6px;
+}
+.message-box_emoji span {
+  transform: scale(1.25);
+}
+.message-box_text {
+  font-size: 120%;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--white);
+  margin: 0;
+}
+.qr-wrapper .message-box {
+  background: var(--brand-color);
+}
+.message-box {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform: perspective(300px) rotateX(0deg) rotateY(-6deg) scale3d(1.02, 1.02, 1.02) translateX(-10px);
+  margin-left: 20px;
+  margin-right: 20px;
+}

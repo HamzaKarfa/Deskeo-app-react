@@ -9,19 +9,10 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import { connect } from 'react-redux';
-import { updateContentCC1 } from "../../../action";
 import '../Admin.css'
 
-const stateModal = (state, props) => {
-  return { props: props, state : state };
-};
-const dispatchModal =(dispatch,props) =>{
-  return {
-    updateStateContentCC1: () => { dispatch(updateContentCC1(props.Users)) },
-    }
- };
-const ModalConnect = ({updateStateContentCC1,props}) => {
+
+const Modal = (props) => {
 
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -31,7 +22,11 @@ const ModalConnect = ({updateStateContentCC1,props}) => {
         setOpen(false);
     };
     const ActionButton = () => {
-      updateStateContentCC1()
+      props.Phrase(props.Users)
+      if (props.varRequest !== '') {
+        props.setRequest('')
+      }
+
       setOpen(false);
     };
     
@@ -71,7 +66,7 @@ const ModalConnect = ({updateStateContentCC1,props}) => {
     );
 }
 
-const Modal = connect(stateModal,dispatchModal)(ModalConnect)
+
 export default Modal;
 
 

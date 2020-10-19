@@ -8,7 +8,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Modal from './Modal';
 import '../Admin.css'
 
-export default function ListImage() {
+export default function ListImage(props) {
     const classes = useStyles();
     const [Users, setUsers] = useState('');
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function ListImage() {
         if (image === null) {
             return <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" width="70px" height="80px" alt='logo'/>
         }else {
-            return (<img src ={image} width="80px" height="80px" alt='logo'/>)
+            return (<img src ={image} height="80px" alt='logo'/>)
         }
     }
 
@@ -42,8 +42,15 @@ export default function ListImage() {
                     <ListItemAvatar className={classes.img}>
                         {displayImg(Users[key].images_path)}
                     </ListItemAvatar>
-                    <Modal Users={Users[key]} key={key}/>
- 
+                    <Modal  Users={Users[key]} 
+                            key={key} Image={props.Image} 
+                            Images={props.Images} 
+                            ImagesId={props.ImagesId} 
+                            varImages={props.varImages} 
+                            varImagesId={props.varImagesId}
+                            varRequest={props.varRequest}
+                            setRequest={props.setRequest}
+                    />
                 </ListItem>  
                 <Divider variant="inset" component="li" />
             </>

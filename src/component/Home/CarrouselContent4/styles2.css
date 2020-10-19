@@ -1,0 +1,149 @@
+
+.sidebar {
+    width: 22%;
+    margin: 0 4% 0 auto;
+    transform: translateZ(1px);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 10px;
+  }
+  .sidebar .qr-wrapper .message-box {
+    display: flex;
+    align-items: center;
+    background: var(--brand-color);
+    border-radius: 40px;
+    padding: 0.5rem 0.25rem;
+  }
+  .sidebar .qr-wrapper .message-box_emoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    box-shadow: var(--box-shadow);
+    margin-left: 0.33rem;
+    margin-right: 0.33rem;
+  }
+  .sidebar .qr-wrapper .message-box_emoji span {
+    transform: scale(1.25);
+  }
+  .sidebar .qr-wrapper .message-box_text {
+    font-size: 120%;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--white);
+    margin: 0;
+  }
+  .sidebar .qr-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+  .sidebar .pies-wrapper {
+    display: block;
+    padding: 0 10px 10px 10px;
+  }
+  .sidebar .pies-wrapper .pie-box p {
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+    text-align: center;
+    color: var(--brand-color);
+    margin: 30px auto 20px;
+  }
+  .sidebar .pies-wrapper .pie-box small {
+    display: block;
+    margin: 6px auto;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f8f8f8;
+    position: relative;
+    margin: 0 auto;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart.gt-50 {
+    background-color: var(--brand-color) !important;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart.gt-50 .ppc-progress {
+    clip: rect(0, 100px, 200px, 0) !important;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart.gt-50 .ppc-progress .ppc-progress-fill {
+    clip: rect(0, 200px, 200px, 100px) !important;
+    background-color: #f8f8f8 !important;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart.empty .ppc-percents {
+    left: calc(50% - 87px);
+    top: calc(50% - 87px);
+    width: 174px;
+    height: 174px;
+    background: var(--brand-color);
+  }
+  .sidebar .pies-wrapper .progress-pie-chart.empty .ppc-percents .pcc-percents-wrapper span {
+    color: var(--white);
+  }
+  .sidebar .pies-wrapper .progress-pie-chart .ppc-progress {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    clip: rect(0, 200px, 200px, 100px);
+  }
+  .sidebar .pies-wrapper .progress-pie-chart .ppc-progress .ppc-progress-fill {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    clip: rect(0, 100px, 200px, 0);
+    background: var(--brand-color);
+  }
+  .sidebar .pies-wrapper .progress-pie-chart .ppc-percents {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 87px);
+    top: calc(50% - 87px);
+    width: 174px;
+    height: 174px;
+    background: var(--white);
+    text-align: center;
+    display: table;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart .ppc-percents .pcc-percents-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .sidebar .pies-wrapper .progress-pie-chart .ppc-percents .pcc-percents-wrapper span {
+    display: block;
+    font-size: 2.6em;
+    font-weight: bold;
+    color: var(--brand-color);
+  }
+  .second .item_perspective {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    will-change: transform;
+    transform: perspective(300px) rotateX(1deg) rotateY(-3deg) scale3d(1, 1, 1);
+  }
+  .second .item_perspective-inverse {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    will-change: transform;
+    transform: perspective(300px) rotateX(-1deg) rotateY(3deg) scale3d(1, 1, 1) translateX(20px);
+  }
+  .item_content-wrapper h1{
+    text-transform: capitalize;
+  }
+  .list{
+    padding: 15px !important;
+  }

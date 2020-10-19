@@ -1,0 +1,10 @@
+.contentIFS img{
+    width: 75%;
+    height: auto;
+}
+.contentIFS{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

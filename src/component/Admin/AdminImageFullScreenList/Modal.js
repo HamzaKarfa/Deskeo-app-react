@@ -1,27 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
-import { connect } from 'react-redux';
-import { updateContentCC2 } from "../../../action";
-import { updateContentCC3 } from "../../../action";
 import '../Admin.css'
 
-const stateModal = (state, props) => {
-  return { props: props, state : state };
-};
-const dispatchModal =(dispatch,props) =>{
-  return {
-    updateStateContentCC2: () => { dispatch(updateContentCC2(props.Users)) },
-    updateStateContentCC3:()=>{ dispatch(updateContentCC3(props.Users)) }
-    }
- };
-const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3,state}) => {
 
-    const [open, setOpen] = React.useState(false);
+const Modal = (props) => {
+
+
+    const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -29,15 +19,19 @@ const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3,state})
         setOpen(false);
     };
     const ActionButton = (button) => {
+      if (props.varRequest !== '') {
+        props.setRequest('')
+      }
       if (button === '1') {
-        updateStateContentCC2()
+        props.Image(props.Users)
+        // updateStateContentCC2()
       } else {
-        if (state.ImageCarrouselContent3.length >= 3) {
+        if (props.varImages.length >= 3) {
           alert('Vous ne pouvez pas mettre plus de 3 images sur cette slide')
         }else{
-          updateStateContentCC3()
+          props.Images(props.varImages.concat([props.Users]))
+          props.ImagesId(props.varImagesId.concat([props.Users.id]))
         }
-        console.log(state.ImageCarrouselContent3)
       }
       setOpen(false);
     };
@@ -75,7 +69,6 @@ const ModalConnect = ({updateStateContentCC2,props,updateStateContentCC3,state})
     );
 }
 
-const Modal = connect(stateModal,dispatchModal)(ModalConnect)
 export default Modal;
 
 
