@@ -25,13 +25,14 @@
   box-shadow: var(--box-shadow);
 }
 .phrasePDJ{
+  margin-top: 30px;
   font-family: "Source Sans Pro", sans-serif;
   max-width: 80%;
-    font-size: 32px;
-    font-style: italic;
-    font-weight: 400;
-    text-align: center;
-    color: var(--brand-color);
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+  color: var(--brand-color);
 }
 .imgPDJ{
   height: 70%;
