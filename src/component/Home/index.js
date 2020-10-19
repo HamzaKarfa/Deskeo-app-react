@@ -5,6 +5,7 @@ import React,{useState, useEffect} from 'react';
  import FullScreenImages from './CarrouselContent3/MultipleFullScreenImage';
 import SDRApp from './CarrouselContent4/';
 import SDRAppMeteo from './CarrouselContent5/';
+import './home.css';
 import './home2.css';
 import Carousel from 'react-material-ui-carousel';
 

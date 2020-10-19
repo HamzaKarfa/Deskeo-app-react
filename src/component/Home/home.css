@@ -1,0 +1,478 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap");
+* {
+  box-sizing: border-box;
+  --brand-color: #1db996;
+  --black: #262728;
+  --white: #ffffff;
+  --source-sans-pro: "Source Sans Pro", sans-serif;
+  --box-shadow: 0 5px 25px -7px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--source-sans-pro);
+  color: var(--black);
+  height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 18px 0;
+}
+header img {
+  cursor: pointer;
+}
+header .title {
+  font-size: 28px;
+  font-style: italic;
+  text-align: center;
+  color: var(--brand-color);
+  margin: 10px auto 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 18px 0;
+}
+footer p {
+  margin: 0;
+}
+
+.rooms .title {
+  font-size: 48px;
+  font-style: italic;
+  text-align: center;
+  color: var(--brand-color);
+  margin: 20px auto;
+}
+.rooms .title span {
+  display: block;
+  font-size: 50%;
+  color: var(--black);
+}
+.rooms .list {
+  display: flex;
+  flex-direction: column;
+}
+.rooms .list .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  z-index: 300;
+}
+.rooms .list .item:not(:last-child) {
+  margin-bottom: 40px;
+}
+.rooms .list .item_image-wrapper {
+  display: none;
+  width: calc(100% / 2);
+  height: 350px;
+  max-height: 350px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transform: translateZ(1px);
+  box-shadow: var(--box-shadow);
+}
+@media screen and (min-width: 992px) {
+  .rooms .list .item_image-wrapper {
+    display: block;
+  }
+}
+.rooms .list .item_image-wrapper img {
+  position: absolute;
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+}
+.rooms .list .item_content-wrapper {
+  width: calc(100% / 1.5);
+  margin-left: -5%;
+  z-index: 18;
+  transform: translateZ(30px);
+}
+.rooms .list .item_content-wrapper h1 {
+  font-size: 36px;
+  font-weight: 900;
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+.rooms .list .item_content-wrapper p {
+  margin: 0 0 6px 0;
+  padding: 0;
+}
+.rooms .list .item_content-wrapper .availability {
+  display: inline-block;
+  background: var(--white);
+  padding: 10px 40px 6px 20px;
+  box-shadow: var(--box-shadow);
+}
+.rooms .list .item_content-wrapper .availability p:first-child {
+  text-transform: uppercase;
+  font-size: 80%;
+}
+.rooms .list .item_content-wrapper .progress {
+  display: flex;
+  position: relative;
+  margin: 22px 0 0 0;
+}
+.rooms .list .item_content-wrapper .progress p {
+  position: absolute;
+  z-index: 99;
+  font-weight: 400;
+  color: var(--black);
+  top: 2.5px;
+  left: 15px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 900;
+}
+.rooms .list .item_content-wrapper .progress_wrapper {
+  width: 80%;
+  height: 20px;
+  position: relative;
+  background: var(--black);
+  padding: 4px;
+  box-shadow: var(--box-shadow);
+}
+.rooms .list .item_content-wrapper .progress_bar {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+.rooms .list .item_content-wrapper .progress_emoji {
+  width: 20%;
+  margin-top: -2px;
+}
+.rooms .list .item_content-wrapper .progress_emoji span {
+  margin-left: 2px;
+}
+@media screen and (min-width: 992px) {
+  .rooms .list .item_image-wrapper {
+    width: calc(100% / 2);
+  }
+  .rooms .list .item_image-wrapper {
+    width: calc(100% / 1.5);
+  }
+}
+.rooms .sidebar {
+  margin: 20px auto;
+  padding: 16px 8px;
+  z-index: 1;
+  transform: translateZ(1px);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+.rooms .sidebar .message-box {
+  display: flex;
+  align-items: center;
+  background: var(--black);
+  border-radius: 40px;
+  padding: 4% 3%;
+  box-shadow: var(--box-shadow);
+}
+.rooms .sidebar .message-box_emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: var(--box-shadow);
+  margin-right: 6px;
+}
+.rooms .sidebar .message-box_emoji span {
+  transform: scale(1.25);
+}
+.rooms .sidebar .message-box_text {
+  font-size: 120%;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--white);
+  margin: 0;
+}
+.rooms .sidebar .qr-wrapper img {
+  width: 100%;
+  height: auto;
+}
+.rooms .sidebar .qr-wrapper .message-box {
+  background: var(--brand-color);
+}
+
+.rooms .sidebar .pies-wrapper {
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  .rooms .sidebar .pies-wrapper {
+    display: block;
+  }
+}
+.rooms .sidebar .pies-wrapper .pie-box:not(:last-child) {
+  margin-bottom: 40px;
+}
+.rooms .sidebar .pies-wrapper .pie-box p {
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  color: var(--brand-color);
+  margin: 18px auto 6px;
+}
+.rooms .sidebar .pies-wrapper .pie-box small {
+  display: block;
+  margin: 6px auto;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #f8f8f8;
+  position: relative;
+  margin: 0 auto;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart.gt-50 {
+  background-color: var(--brand-color) !important;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart.gt-50 .ppc-progress {
+  clip: rect(0, 100px, 200px, 0) !important;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart.gt-50 .ppc-progress .ppc-progress-fill {
+  clip: rect(0, 200px, 200px, 100px) !important;
+  background-color: #f8f8f8 !important;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart.empty .ppc-percents {
+  left: calc(50% - 87px);
+  top: calc(50% - 87px);
+  width: 174px;
+  height: 174px;
+  background: var(--brand-color);
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart.empty .ppc-percents .pcc-percents-wrapper span {
+  color: var(--white);
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart .ppc-progress {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 200px, 200px, 100px);
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart .ppc-progress .ppc-progress-fill {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 100px, 200px, 0);
+  background: var(--brand-color);
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart .ppc-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 87px);
+  top: calc(50% - 87px);
+  width: 174px;
+  height: 174px;
+  background: var(--white);
+  text-align: center;
+  display: table;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart .ppc-percents .pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.rooms .sidebar .pies-wrapper .progress-pie-chart .ppc-percents .pcc-percents-wrapper span {
+  display: block;
+  font-size: 2.6em;
+  font-weight: bold;
+  color: var(--brand-color);
+}
+
+main {
+  width: 100%;
+  padding: 0 4%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+main.main {
+  align-items: center;
+}
+main.main .meteo {
+  width: 25%;
+  margin-right: 2%;
+}
+main.main .rooms {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+main.main .rooms .title {
+  display: none;
+}
+main.main .rooms .list {
+  width: 80%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  margin: 30px auto;
+}
+main.main .rooms .list .item {
+  width: 33%;
+  margin-bottom: 0;
+}
+main.main .rooms .list .item_image-wrapper {
+  display: none;
+}
+main.main .rooms .list .item_content-wrapper h1 {
+  font-size: 150%;
+}
+main.main .rooms .list .item_content-wrapper h1 span {
+  display: none;
+}
+main.main .rooms .list .item_content-wrapper .progress p {
+  display: none;
+}
+main.main .rooms .sidebar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    box-shadow: none;
+    padding: 0;
+}
+main.main .rooms .sidebar .message-box {
+    margin: 10px;
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+}
+main.main .rooms .sidebar .pies-wrapper {
+  display: none;
+}
+main.hl-rooms .meteo {
+  display: none;
+}
+main.hl-rooms .rooms {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: none;
+}
+@media screen and (min-width: 992px) {
+  main.hl-rooms .rooms {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 992px) {
+  main.hl-rooms .rooms section:first-child {
+    width: 100%;
+  }
+  main.hl-rooms .rooms section:last-child {
+    flex: 1;
+  }
+}
+@media screen and (min-width: 992px) {
+  main.hl-rooms .rooms section:first-child {
+    flex: 5;
+    margin-right: 5%;
+  }
+  main.hl-rooms .rooms section:last-child {
+    flex: 1;
+    margin-left: 2.5%;
+  }
+}
+main.hl-rooms .list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+main.hl-rooms .item {
+  width: 45%;
+}
+@media screen and (min-width: 992px) {
+  main.hl-rooms .item:not(:last-child) {
+    margin-bottom: 40px;
+  }
+  main.hl-rooms .item_perspective {
+    will-change: transform;
+    transform: perspective(300px) rotateX(1deg) rotateY(-3deg) scale3d(1, 1, 1);
+  }
+  main.hl-rooms .item_perspective-inverse {
+    will-change: transform;
+    transform: perspective(300px) rotateX(-1deg) rotateY(3deg) scale3d(1, 1, 1) translateX(50px);
+  }
+}
+@media screen and (min-width: 992px) {
+  main.hl-rooms .message-box {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: perspective(300px) rotateX(0deg) rotateY(-6deg) scale3d(1.02, 1.02, 1.02) translateX(-30px);
+  }
+}
+
+.qrCodeBox{
+    margin-top: 30px;
+}
+
+.phraseSection{
+    display: flex;
+    justify-content: center;
+    /* border: black 2px solid; */
+}
+.phraseParagraphe{
+  font-family: var(--source-sans-pro);
+  font-style: italic;
+  font-size: 16pt;
+  text-align: center;
+  padding: 10px;
+}
+.imageHome{
+
+  margin: 0 auto;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.Carousel-indicators-2 {
+  display: none;
+}
+
+
+.thrid{
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.first{
+  width: 100vw !important;
+  height: 100vh;
+  padding-top: 70px !important;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.Carousel-indicators-29 ,.Carousel-indicators-30  {
+  display:none;
+}
