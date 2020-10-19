@@ -114,7 +114,7 @@ h2{
     align-items: center;
     background: var(--black);
     border-radius: 40px;
-    padding: 3%, 1%;
+    padding: 4%, 2%;
     box-shadow: var(--box-shadow);
   }
 .message-box_emoji {
