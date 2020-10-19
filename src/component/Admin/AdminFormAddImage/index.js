@@ -51,7 +51,7 @@ function ContentSlide2() {
                     <form name='form' action="" method='post' style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
                          {displayImg()}
                         <Button variant="contained" component="label" style={{margin: '10px',}} >
-                            Selectionner une image
+                            Ajouter une image
                             <input id="id-for-upload-file" name="file" multiple="multiple" onChange={(e)=> {
                                     setAllImage(e.target.files)
                                 }
