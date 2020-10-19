@@ -157,3 +157,6 @@ h2{
 .roomNameSDRMeteo{
     width: 360px;
 }
+.meteoCity{
+    text-align: center;
+}
