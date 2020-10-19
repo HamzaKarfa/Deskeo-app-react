@@ -151,7 +151,7 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
                         <p class="message-box_text">Réservez votre salle!</p>
                     </div>
                     <div className="qrCodeBox" >
-                        <QRCode value="http://living-app.kaffein.agency:3001/home" size='100'/>   
+                        <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fmembers.deskeo.fr%2F&chs=180x180&choe=UTF-8&chld=L|2" alt=''/> 
                     </div>
                 </div>
                 <div class="meteo">

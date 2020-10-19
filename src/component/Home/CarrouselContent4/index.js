@@ -175,7 +175,7 @@ function SDRConnect({state, setRooms, setLoadings,setIdles}) {
                     <div class="message-box_emoji"><span>🤳</span></div>
                     <p class="message-box_text">Réservez votre salle!</p>
                 </div>
-                <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fmembers.deskeo.fr%2F&chs=180x180&choe=UTF-8&chld=L|2" />
+                <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fmembers.deskeo.fr%2F&chs=180x180&choe=UTF-8&chld=L|2" alt=''/>
             </div>
             <div class="pies-wrapper">
                 <div class="pie-box">
