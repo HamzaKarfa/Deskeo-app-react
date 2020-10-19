@@ -68,6 +68,50 @@ function Admin() {
             )
         }
     }
+    function displayTable(){
+        return (
+            <table className={classes.center}>
+                <thead>
+                <tr>
+                    <th>Phrase du jour selectionné  
+                        <br/>     
+                        <DeleteIcon
+                            onClick={()=>{setPhraseDuJour('')}}
+                            type="delete"
+                            style={{height:'55px',width:'35px',color: "#CC160B" }}
+                            theme="outlined"
+                        />
+                    </th>
+                    <th>Image plein écran
+                        <br/>     
+                        <DeleteIcon
+                            onClick={()=>{setImageFullScreen('')}}
+                            type="delete"
+                            style={{height:'55px',width:'35px',color: "#CC160B" }}
+                            theme="outlined"
+                        />
+                    </th>
+                    <th>Multiple image plein écran
+                    <br/>     
+                        <DeleteIcon
+                            onClick={()=>{resetMultipleImage()}}
+                            type="delete"
+                            style={{height:'55px',width:'35px',color: "#CC160B" }}
+                            theme="outlined"
+                        />
+                    </th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr>
+                    <td className="contentTable">{phraseDuJour.phrases_of_day}<br/><img src={phraseDuJour.image} className={classes.imageTable} alt=''/></td>
+                    <td className="contentTable"><img src={imageFullScreen.images_path} className={classes.imageTable} alt=''/></td>
+                    <td className="contentTable">{displayElementTable()}</td>
+                </tr>
+                </tbody>
+            </table>
+        )
+    }
     return (
         <div className={classes.root}>
             <AppBar position="sticky">
@@ -82,58 +126,22 @@ function Admin() {
             </AppBar>
             <div className='table'>
                 {displayResponseRequest()}
-                <table className={classes.center}>
-                    <thead>
-                    <tr>
-                        <th>Phrase du jour selectionné  
-                            <br/>     
-                            <DeleteIcon
-                                onClick={()=>{setPhraseDuJour('')}}
-                                type="delete"
-                                style={{height:'55px',width:'35px',color: "#CC160B" }}
-                                theme="outlined"
-                            />
-                        </th>
-                        <th>Image plein écran
-                            <br/>     
-                            <DeleteIcon
-                                onClick={()=>{setImageFullScreen('')}}
-                                type="delete"
-                                style={{height:'55px',width:'35px',color: "#CC160B" }}
-                                theme="outlined"
-                            />
-                        </th>
-                        <th>Multiple image plein écran
-                        <br/>     
-                            <DeleteIcon
-                                onClick={()=>{resetMultipleImage()}}
-                                type="delete"
-                                style={{height:'55px',width:'35px',color: "#CC160B" }}
-                                theme="outlined"
-                            />
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody >
-                    <tr>
-                        <td className="contentTable">{phraseDuJour.phrases_of_day}<br/><img src={phraseDuJour.image} className={classes.imageTable} alt=''/></td>
-                        <td className="contentTable"><img src={imageFullScreen.images_path} className={classes.imageTable} alt=''/></td>
-                        <td className="contentTable">{displayElementTable()}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                
                 <Button className='buttonSend' onClick={(()=>sendAdminChoice())}>
                     Valider les Modifications
                 </Button>
             </div>
 
             <TabPanel value={value} index="one">
+                {displayTable()}
+                
                 <ContentTab Phrase={setPhraseDuJour} 
                             Request={setResponseRequest}
                             varRequest={responseRequest}
                 />
             </TabPanel>
             <TabPanel value={value} index="two">
+                {displayTable()}
                 <ContentTab2 Image={setImageFullScreen} 
                             Images={setMultipleImageFullScreen} 
                             ImagesId={setIdMultipleImageFullScreen} 
