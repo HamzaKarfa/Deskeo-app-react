@@ -89,7 +89,7 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
                     return (
                     <div class="item">
                         <div class="item_content-wrapper">
-                            <h1>{state.SDR.rooms[roomId].room.name.substring(6)}</h1>
+                            <h2 className="roomNameSDRMeteo">{state.SDR.rooms[roomId].room.name.substring(6)}</h2>
                             <div class="availability">
                             <p style={{color:displayColor(state.SDR.rooms[roomId].room.name)}}>{displayPlaceNumber(state.SDR.rooms[roomId].room.name)} personnes</p>
                                 {state.SDR.rooms[roomId].availabilities.map((availability, j) => {
