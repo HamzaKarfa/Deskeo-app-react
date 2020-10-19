@@ -158,5 +158,5 @@ h2{
     width: 360px;
 }
 .meteoCity{
-    text-align: center;
+    text-align: center !important;
 }
