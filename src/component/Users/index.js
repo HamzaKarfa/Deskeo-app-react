@@ -37,6 +37,12 @@ export default function Users() {
                 <img src="http://www.deskeo.fr/wp-content/uploads/2019/05/logo-deskeo-knotel-black-164.png" class="toggle-app" title="Click to toggle view" alt='logo'/>
                 </header>
                 <div style={{marginTop:'20px'}}>
+                    <p>
+                        Postez une phrase et/ou une image 
+                        <b>
+                            Serez-vous sélectionné pour être affiché ?
+                        </b>
+                    </p>
                     <form name='form' action="" method='post' style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
                         <textarea 
                                 style={{                         
