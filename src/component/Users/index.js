@@ -39,11 +39,13 @@ export default function Users() {
                 <div style={{marginTop:'20px'}}>
                     <p style={{textAlign:'center'}}>
                         Postez une phrase et/ou une image 
+                    </p>
+                    <p style={{textAlign:'center'}}>
                         <b>
                             Serez-vous sélectionné pour être affiché ?
                         </b>
                     </p>
-                    <form name='form' action="" method='post' style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+                    <form name='form' action="" method='post' style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center', margin:'15px'}}>
                         <textarea 
                                 style={{                         
                                     width: '120%',  height: '100px',
