@@ -146,4 +146,12 @@
   }
   .list{
     padding: 15px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .rooms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
