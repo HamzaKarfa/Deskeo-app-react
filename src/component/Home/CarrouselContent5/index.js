@@ -114,7 +114,7 @@ function SDRMeteoConnect ({state, setRooms, setLoadings,setIdles}) {
              
             return (  
             <div className='meteoList'>
-                <p>LYON Météo du jour</p>
+                <p className='meteoCity'>LYON Météo du jour</p>
                 <div className="meteoDateList">
                     <img src={"http://openweathermap.org/img/wn/" + weather.daily[0].weather[0].icon +"@2x.png"} className="todayIcon"></img>
                     <p className="todayIcon">{Math.round(weather.daily[0].temp.day-273.5)}°C</p>

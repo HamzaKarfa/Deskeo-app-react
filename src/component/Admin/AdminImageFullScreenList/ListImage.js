@@ -43,13 +43,18 @@ export default function ListImage(props) {
                         {displayImg(Users[key].images_path)}
                     </ListItemAvatar>
                     <Modal  Users={Users[key]} 
-                            key={key} Image={props.Image} 
+                            key={key} 
+                            Image={props.Image} 
                             Images={props.Images} 
                             ImagesId={props.ImagesId} 
-                            varImages={props.varImages} 
+                            ImageId={props.ImageId} 
                             varImagesId={props.varImagesId}
+                            varImageId={props.varImageId}
+                            varImage={props.varImage} 
+                            varImages={props.varImages}
                             varRequest={props.varRequest}
-                            setRequest={props.setRequest}
+                            setRequest={props.setRequest}                          
+                            
                     />
                 </ListItem>  
                 <Divider variant="inset" component="li" />

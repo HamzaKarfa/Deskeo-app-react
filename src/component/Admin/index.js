@@ -23,9 +23,10 @@ function Admin() {
 
 
     const [phraseDuJour, setPhraseDuJour] = useState('');
-    const [imageFullScreen, setImageFullScreen] = useState('');
+    const [imageFullScreen, setImageFullScreen] = useState([]);
     const [MultipleImageFullScreen, setMultipleImageFullScreen] = useState([]);
     const [IdMultipleImageFullScreen, setIdMultipleImageFullScreen] = useState([]);
+    const [IdImageFullScreen, setIdImageFullScreen] = useState([]);
     const [responseRequest, setResponseRequest] = useState('');
 
     const classes = useStyles();
@@ -34,7 +35,7 @@ function Admin() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    function displayElementTable(){
+    function displayElementTableMultipleImageFS(){
         if (MultipleImageFullScreen.length>0) {
         return (   
             Object.keys(MultipleImageFullScreen).map((key)=> {
@@ -45,11 +46,22 @@ function Admin() {
             )
         }
     }
+    function displayElementTableImageFS(){
+        if (imageFullScreen.length>0) {
+        return (   
+            Object.keys(imageFullScreen).map((key)=> {
+                return (
+                    <img src={imageFullScreen[key].images_path} className={classes.imageTable} alt=''/>
+                    )
+                })
+            )
+        }
+    }
     function sendAdminChoice(){
 
         var formData = new FormData();
         formData.append("phraseDuJour", phraseDuJour.id);
-        formData.append("ImageFullScreen", imageFullScreen.id);
+        formData.append("ImageFullScreen", IdImageFullScreen);
         formData.append("MultipleImageFullScreen", IdMultipleImageFullScreen);
         fetch('http://living-app-api.kaffein.agency:3006/adminChoice',{
             method:'post',
@@ -60,6 +72,10 @@ function Admin() {
     function resetMultipleImage(){
         setIdMultipleImageFullScreen([])
         setMultipleImageFullScreen([])
+    }
+    function resetImageFS(){
+        setIdImageFullScreen([])
+        setImageFullScreen([])
     }
     function displayResponseRequest(){
         if (responseRequest !== '') {            
@@ -93,17 +109,17 @@ function Admin() {
                             />
                         </td>
                         <td className="contentTable">
-                            <img src={imageFullScreen.images_path} className={classes.imageTable} alt=''/>
+                            {displayElementTableImageFS()}
                             <br/>     
                             <DeleteIcon
-                                onClick={()=>{setImageFullScreen('')}}
+                                onClick={()=>{resetImageFS()}}
                                 type="delete"
                                 style={{height:'55px',width:'35px',color: "#CC160B" }}
                                 theme="outlined"
                             />
                         </td>
                         <td className="contentTable">
-                            {displayElementTable()}
+                            {displayElementTableMultipleImageFS()}
                             <br/>     
                             <DeleteIcon
                                 onClick={()=>{resetMultipleImage()}}
@@ -137,7 +153,7 @@ function Admin() {
             <TabPanel value={value} index="one">
                 {displayTable()}         
                 <ContentTab Phrase={setPhraseDuJour} 
-                            Request={setResponseRequest}
+                            setRequest={setResponseRequest}
                             varRequest={responseRequest}
                 />
             </TabPanel>
@@ -146,9 +162,12 @@ function Admin() {
                 <ContentTab2 Image={setImageFullScreen} 
                             Images={setMultipleImageFullScreen} 
                             ImagesId={setIdMultipleImageFullScreen} 
+                            ImageId={setIdImageFullScreen} 
                             setRequest={setResponseRequest}
+                            varImage={imageFullScreen}
                             varImages={MultipleImageFullScreen}
                             varImagesId={IdMultipleImageFullScreen}
+                            varImageId={IdImageFullScreen}
                             varRequest={responseRequest}
                 />
             </TabPanel>

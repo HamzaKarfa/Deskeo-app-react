@@ -23,8 +23,8 @@ const Modal = (props) => {
         props.setRequest('')
       }
       if (button === '1') {
-        props.Image(props.Users)
-        // updateStateContentCC2()
+        props.Image(props.varImage.concat([props.Users]))
+        props.ImageId(props.varImageId.concat([props.Users.id]))
       } else {
         if (props.varImages.length >= 3) {
           alert('Vous ne pouvez pas mettre plus de 3 images sur cette slide')

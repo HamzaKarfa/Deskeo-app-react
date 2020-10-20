@@ -39,7 +39,10 @@ function Content(props) {
               <ListImage  Image={props.Image} 
                           Images={props.Images} 
                           ImagesId={props.ImagesId} 
+                          ImageId={props.ImageId} 
                           varImagesId={props.varImagesId} 
+                          varImageId={props.varImageId}
+                          varImage={props.varImage} 
                           varImages={props.varImages}
                           varRequest={props.varRequest}
                           setRequest={props.setRequest}
