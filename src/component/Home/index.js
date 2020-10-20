@@ -107,7 +107,7 @@ import Carousel from 'react-material-ui-carousel';
     addItem()
     return (
         <div className="Home">
-            <Carousel interval={5000} timeout={1000} animation={'fade'} indicators={false} navButtonsAlwaysInvisible className="Carousel" >
+            <Carousel interval={15000} timeout={1000} animation={'fade'} indicators={false} navButtonsAlwaysInvisible className="Carousel" >
                 {
                     items.map( (item) => {
                         return (
