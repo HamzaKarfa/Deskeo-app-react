@@ -12,6 +12,9 @@ width: 500px;
 .modalContent{
     text-align: center;
 }   
+.MuiList-root {
+    width: 75% !important;
+}
 .MuiListItem-root{
     justify-content: space-around !important;
 }
